@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Área da Academia | Fight App</title>
+  <link rel="stylesheet" href="dashboard_academia.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+</head>
+<body>
+  <script>
+    if (!localStorage.getItem('userType') || localStorage.getItem('userType') !== 'academia') {
+      window.location.href = 'index.html';
+    }
+  </script>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="sidebar-title">Academia</div>
+      <nav>
+        <ul>
+          <li class="active" data-section="feed">Feed</li>
+          <li data-section="perfil">Meu Perfil</li>
+          <li data-section="alunos">Alunos</li>
+          <li data-section="conquistas">Conquistas</li>
+          <li data-section="produtos">Produtos</li>
+          <li data-section="pesquisar">Pesquisar Academias</li>
+          <li data-section="sair">Sair</li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <section id="section-feed" class="dashboard-section">
+        <header class="main-header">
+          <h1>Bem-vindo, <span class="user-name">Dojo Samurai</span>!</h1>
+        </header>
+        <section class="feed-section">
+          <h2>Novidades e Eventos</h2>
+          <div class="feed-list">
+            <div class="feed-card">
+              <h3>Festival de Artes Marciais</h3>
+              <p>Data: 10/08/2024</p>
+              <p>Local: Ginásio Central</p>
+              <button>Ver detalhes</button>
+            </div>
+            <div class="feed-card">
+              <h3>Promoção: Tatame 20% OFF</h3>
+              <p>Fornecedor: LutaShop</p>
+              <button>Ver produto</button>
+            </div>
+          </div>
+        </section>
+      </section>
+      <section id="section-perfil" class="dashboard-section" style="display:none;">
+        <div class="perfil-container">
+          <div class="perfil-foto">
+            <img id="foto-perfil" src="https://i.imgur.com/1Q9Z1Zm.png" alt="Foto do Dojo" />
+            <input type="file" id="input-foto" accept="image/*" style="display:none;" />
+            <button id="btn-foto">Alterar foto</button>
+          </div>
+          <div class="perfil-info">
+            <h2 id="perfil-nome">Dojo Samurai</h2>
+            <div class="perfil-bio">
+              <textarea id="perfil-bio" placeholder="Escreva sobre sua academia..." maxlength="180"></textarea>
+            </div>
+            <div class="perfil-artes">
+              <label for="perfil-arte">Artes marciais:</label>
+              <select id="perfil-arte">
+                <option value="">Selecione</option>
+                <option>Jiu-Jitsu</option>
+                <option>Muay Thai</option>
+                <option>Boxe</option>
+                <option>Judô</option>
+                <option>MMA</option>
+                <option>Taekwondo</option>
+                <option>Karate</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <button id="salvar-perfil">Salvar Perfil</button>
+          </div>
+        </div>
+      </section>
+      <section id="section-alunos" class="dashboard-section" style="display:none;">
+        <h2>Alunos da Academia</h2>
+        <input type="text" id="pesquisa-academia" placeholder="Pesquisar academias..." class="barra-pesquisa" />
+        <div class="alunos-list">
+          <div class="aluno-card">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Aluno" />
+            <span>João Silva</span>
+            <span>Jiu-Jitsu</span>
+          </div>
+          <div class="aluno-card">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Aluno" />
+            <span>Maria Souza</span>
+            <span>Muay Thai</span>
+          </div>
+          <div class="aluno-card">
+            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Aluno" />
+            <span>Carlos Lima</span>
+            <span>Boxe</span>
+          </div>
+        </div>
+      </section>
+      <section id="section-conquistas" class="dashboard-section" style="display:none;">
+        <h2>Conquistas da Academia</h2>
+        <div class="conquistas-list">
+          <div class="conquista-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/2583/2583346.png" alt="Medalha Ouro" />
+            <span>Campeã Estadual 2023</span>
+          </div>
+        </div>
+      </section>
+      <section id="section-produtos" class="dashboard-section" style="display:none;">
+        <h2>Produtos para Academias</h2>
+        <button id="btn-add-produto">Adicionar Produto</button>
+        <form id="form-produto" style="display:none; margin-top:1.5rem; margin-bottom:1.5rem; background:#232323; padding:1.2rem; border-radius:12px; max-width:350px;">
+          <input type="text" id="produto-nome" placeholder="Nome do produto" required style="width:100%;margin-bottom:0.7rem;" />
+          <textarea id="produto-desc" placeholder="Descrição" required style="width:100%;margin-bottom:0.7rem;"></textarea>
+          <input type="number" id="produto-preco" placeholder="Preço" required min="0" step="0.01" style="width:100%;margin-bottom:0.7rem;" />
+          <input type="file" id="produto-img" accept="image/*" style="margin-bottom:0.7rem;" />
+          <button type="submit">Salvar Produto</button>
+        </form>
+        <div class="produtos-list" id="produtos-list">
+          <!-- Produtos dinâmicos -->
+        </div>
+      </section>
+      <section id="section-pesquisar" class="dashboard-section" style="display:none;">
+        <h2>Pesquisar Academias</h2>
+        <input type="text" id="pesquisa-academia-global" placeholder="Buscar academias..." class="barra-pesquisa" />
+        <div class="academias-list">
+          <div class="academia-card">
+            <img src="https://i.imgur.com/1Q9Z1Zm.png" alt="Academia" />
+            <span>Dojo Samurai</span>
+            <span>Jiu-Jitsu, MMA</span>
+            <button>Ver perfil</button>
+          </div>
+          <div class="academia-card">
+            <img src="https://i.imgur.com/1Q9Z1Zm.png" alt="Academia" />
+            <span>Gracie Barra</span>
+            <span>Jiu-Jitsu</span>
+            <button>Ver perfil</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="dashboard_academia.js"></script>
+</body>
+</html> 

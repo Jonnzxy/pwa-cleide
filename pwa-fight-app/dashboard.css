@@ -1,0 +1,428 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #181818 0%, #232323 100%);
+  color: #fff;
+  min-height: 100vh;
+}
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+.sidebar {
+  width: 220px;
+  background: #181818;
+  box-shadow: 2px 0 16px #0005;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem 1rem 1rem;
+}
+.sidebar-title {
+  font-family: 'Bangers', Impact, sans-serif;
+  font-size: 2rem;
+  color: #ffb300;
+  margin-bottom: 2.5rem;
+  letter-spacing: 2px;
+  text-shadow: 2px 3px 0 #000, 0 2px 12px #ffb30055;
+}
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+.sidebar nav ul li {
+  padding: 0.9rem 0.7rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-align: left;
+  user-select: none;
+}
+.sidebar nav ul li.active, .sidebar nav ul li:hover {
+  background: linear-gradient(90deg, #ffb300 0%, #ff8c00 100%);
+  color: #181818;
+}
+.main-content {
+  flex: 1;
+  padding: 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.main-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffb300;
+  margin: 0 0 2rem 0;
+  text-shadow: 0 2px 12px #ffb30033;
+}
+.user-name {
+  color: #fff;
+  font-weight: 700;
+}
+.feed-section h2 {
+  color: #ffb300;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+}
+.feed-list {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.feed-card {
+  background: #232323;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px #0003;
+  padding: 1.3rem 1.5rem;
+  min-width: 260px;
+  max-width: 320px;
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fadeInCard 0.7s cubic-bezier(.23,1.02,.32,1);
+}
+.feed-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px #ffb30033;
+}
+.feed-card h3 {
+  margin: 0 0 0.3rem 0;
+  color: #ffb300;
+  font-size: 1.1rem;
+}
+.feed-card button {
+  align-self: flex-end;
+  background: linear-gradient(90deg, #ffb300 0%, #ff8c00 100%);
+  color: #181818;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #ffb30033;
+}
+.feed-card button:hover {
+  background: #ff8c00;
+}
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 900px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100vw;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1rem 0.5rem;
+  }
+  .sidebar nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  .main-content {
+    padding: 1.5rem 0.5rem;
+  }
+}
+
+/***** Abas Gerais *****/
+.dashboard-section { display: none; }
+.dashboard-section:first-child { display: block; }
+
+/***** Perfil estilo Instagram *****/
+.perfil-container {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.perfil-foto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.perfil-foto img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffb300;
+  box-shadow: 0 2px 12px #ffb30033;
+}
+.perfil-foto button {
+  background: linear-gradient(90deg, #ffb300 0%, #ff8c00 100%);
+  color: #181818;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.perfil-foto button:hover {
+  background: #ff8c00;
+}
+.perfil-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  min-width: 220px;
+  max-width: 340px;
+}
+#perfil-nome {
+  color: #ffb300;
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  text-align: left;
+}
+.perfil-bio textarea {
+  width: 100%;
+  min-height: 60px;
+  max-height: 120px;
+  border-radius: 8px;
+  border: 1.5px solid #444;
+  background: #232323;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.7rem;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.perfil-bio textarea:focus {
+  border-color: #ffb300;
+}
+.perfil-artes label {
+  color: #ffb300;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+#perfil-arte {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1.5px solid #444;
+  background: #181818;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  margin-left: 0.2rem;
+}
+#salvar-perfil {
+  background: linear-gradient(90deg, #ffb300 0%, #ff8c00 100%);
+  color: #181818;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+#salvar-perfil:hover {
+  background: #ff8c00;
+}
+/***** Conquistas *****/
+.conquistas-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.conquista-card {
+  background: #232323;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px #0003;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 140px;
+  max-width: 180px;
+}
+.conquista-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0.5rem;
+}
+.conquista-card span {
+  color: #ffb300;
+  font-weight: 600;
+  text-align: center;
+}
+/***** Patrocinadores *****/
+.patrocinadores-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.patro-card {
+  background: #232323;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px #0003;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 140px;
+  max-width: 180px;
+}
+.patro-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 8px;
+}
+.patro-card span {
+  color: #ffb300;
+  font-weight: 600;
+  text-align: center;
+}
+.patro-card a {
+  color: #ffb300;
+  text-decoration: underline;
+  font-size: 0.98rem;
+  margin-top: 0.3rem;
+}
+/***** Produtos *****/
+.produtos-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.produto-card {
+  background: #232323;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px #0003;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 140px;
+  max-width: 180px;
+}
+.produto-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 0.5rem;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.produto-card span {
+  color: #ffb300;
+  font-weight: 600;
+  text-align: center;
+}
+.produto-card button {
+  background: linear-gradient(90deg, #ffb300 0%, #ff8c00 100%);
+  color: #181818;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.produto-card button:hover {
+  background: #ff8c00;
+}
+@media (max-width: 900px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100vw;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1rem 0.5rem;
+  }
+  .sidebar nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  .main-content {
+    padding: 1.5rem 0.5rem;
+  }
+  .perfil-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+}
+
+/***** Academias *****/
+.academias-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+.academia-card {
+  background: #232323;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px #0003;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 140px;
+  max-width: 180px;
+}
+.academia-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffb300;
+}
+.academia-card span {
+  color: #ffb300;
+  font-weight: 600;
+  text-align: center;
+}
+.academia-card button {
+  background: linear-gradient(90deg, #ffb300 0%, #ff8c00 100%);
+  color: #181818;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.academia-card button:hover {
+  background: #ff8c00;
+} 

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Área do Patrocinador | Fight App</title>
+  <link rel="stylesheet" href="dashboard_academia.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+</head>
+<body>
+  <script>
+    if (!localStorage.getItem('userType') || localStorage.getItem('userType') !== 'patrocinador') {
+      window.location.href = 'index.html';
+    }
+  </script>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <div class="sidebar-title">Patrocinador</div>
+      <nav>
+        <ul>
+          <li class="active" data-section="feed">Feed</li>
+          <li data-section="perfil">Meu Perfil</li>
+          <li data-section="campanhas">Campanhas</li>
+          <li data-section="atletas">Buscar Atletas</li>
+          <li data-section="academias">Buscar Academias</li>
+          <li data-section="sair">Sair</li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <section id="section-feed" class="dashboard-section">
+        <header class="main-header">
+          <h1>Bem-vindo, <span class="user-name">Patrocinador</span>!</h1>
+        </header>
+        <section class="feed-section">
+          <h2>Novidades e Oportunidades</h2>
+          <div class="feed-list">
+            <div class="feed-card">
+              <h3>Evento: Copa Nacional de Lutas</h3>
+              <p>Data: 15/09/2024</p>
+              <p>Oportunidade de patrocínio para atletas e academias!</p>
+              <button>Ver detalhes</button>
+            </div>
+          </div>
+        </section>
+      </section>
+      <section id="section-perfil" class="dashboard-section" style="display:none;">
+        <div class="perfil-container">
+          <div class="perfil-foto">
+            <img id="foto-perfil" src="https://upload.wikimedia.org/wikipedia/commons/4/44/Adidas_Logo.png" alt="Logo da Marca" />
+            <input type="file" id="input-foto" accept="image/*" style="display:none;" />
+            <button id="btn-foto">Alterar logo</button>
+          </div>
+          <div class="perfil-info">
+            <h2 id="perfil-nome">Adidas</h2>
+            <div class="perfil-bio">
+              <textarea id="perfil-bio" placeholder="Escreva sobre sua marca..." maxlength="180"></textarea>
+            </div>
+            <div class="perfil-artes">
+              <label for="perfil-segmento">Segmento:</label>
+              <select id="perfil-segmento">
+                <option value="">Selecione</option>
+                <option>Equipamentos</option>
+                <option>Vestuário</option>
+                <option>Suplementos</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <button id="salvar-perfil">Salvar Perfil</button>
+          </div>
+        </div>
+      </section>
+      <section id="section-campanhas" class="dashboard-section" style="display:none;">
+        <h2>Minhas Campanhas</h2>
+        <div class="conquistas-list">
+          <div class="conquista-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/2583/2583346.png" alt="Campanha" />
+            <span>Campanha "Lute com Estilo"</span>
+          </div>
+        </div>
+      </section>
+      <section id="section-atletas" class="dashboard-section" style="display:none;">
+        <h2>Buscar Atletas</h2>
+        <div class="alunos-list">
+          <div class="aluno-card">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Atleta" />
+            <span>João Silva</span>
+            <span>Jiu-Jitsu</span>
+            <button>Patrocinar</button>
+          </div>
+          <div class="aluno-card">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Atleta" />
+            <span>Maria Souza</span>
+            <span>Muay Thai</span>
+            <button>Patrocinar</button>
+          </div>
+        </div>
+      </section>
+      <section id="section-academias" class="dashboard-section" style="display:none;">
+        <h2>Buscar Academias</h2>
+        <div class="alunos-list">
+          <div class="aluno-card">
+            <img src="https://i.imgur.com/1Q9Z1Zm.png" alt="Academia" />
+            <span>Dojo Samurai</span>
+            <span>Jiu-Jitsu, MMA</span>
+            <button>Patrocinar</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="dashboard_patrocinador.js"></script>
+</body>
+</html> 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fight Connect</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="center-wrapper">
+    <div>
+      <div id="auth-container">
+        <div id="auth-tabs">
+          <button id="login-tab" class="active">Login</button>
+          <button id="register-tab">Registrar-se</button>
+        </div>
+        <form id="login-form" class="auth-form">
+          <h2>Login</h2>
+          <label for="login-email">E-mail</label>
+          <input type="email" id="login-email" required placeholder="Digite seu e-mail" />
+          <label for="login-password">Senha</label>
+          <input type="password" id="login-password" required placeholder="Digite sua senha" />
+          <button type="submit">Entrar</button>
+        </form>
+        <form id="register-form" class="auth-form" style="display:none;">
+          <h2>Registrar-se</h2>
+          <label for="register-type">Tipo de usuário</label>
+          <select id="register-type" required>
+            <option value="">Selecione</option>
+            <option value="lutador">Lutador</option>
+            <option value="academia">Academia</option>
+            <option value="patrocinador">Patrocinador</option>
+          </select>
+          <div id="register-fields"></div>
+          <label class="lgpd">
+            <input type="checkbox" id="lgpd-consent" required />
+            Concordo com a <a href="#" target="_blank">Política de Privacidade (LGPD)</a>
+          </label>
+          <button type="submit">Registrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>

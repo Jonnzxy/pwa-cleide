@@ -1,0 +1,247 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #181818 0%, #232323 100%);
+  color: #fff;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#auth-container {
+  background: rgba(35,35,35,0.98);
+  padding: 2.5rem 2.7rem;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+  width: 100%;
+  max-width: 390px;
+  position: relative;
+  animation: fadeInUp 1s cubic-bezier(.23,1.02,.32,1) 0.1s both;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+#auth-tabs {
+  display: flex;
+  margin-bottom: 2rem;
+  position: relative;
+}
+#auth-tabs button {
+  flex: 1;
+  padding: 0.8rem 0;
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 1.15rem;
+  cursor: pointer;
+  border-bottom: 2.5px solid transparent;
+  transition: color 0.25s, border-color 0.25s;
+  position: relative;
+  z-index: 1;
+  outline: none;
+}
+#auth-tabs button.active {
+  color: #fff;
+  border-bottom: 2.5px solid #ffb300;
+  animation: tabActive 0.5s;
+}
+@keyframes tabActive {
+  from { border-bottom-color: transparent; }
+  to { border-bottom-color: #ffb300; }
+}
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  animation: fadeInForm 0.7s cubic-bezier(.23,1.02,.32,1);
+  align-items: center;
+}
+@keyframes fadeInForm {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.auth-form h2 {
+  margin: 0 0 0.7rem 0;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: #ffb300;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px #0002;
+  animation: fadeInTitle 0.7s 0.1s both;
+  text-align: center;
+  width: 100%;
+}
+@keyframes fadeInTitle {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.auth-form label {
+  font-size: 1.01rem;
+  color: #ffb300;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  margin-bottom: 0.1rem;
+  transition: color 0.2s;
+  text-align: center;
+  width: 100%;
+}
+.auth-form input, .auth-form select {
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #444;
+  background: rgba(24,24,24,0.98);
+  color: #fff;
+  font-size: 1.05rem;
+  outline: none;
+  margin-bottom: 0.1rem;
+  box-shadow: 0 2px 8px #0001;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+  position: relative;
+  animation: fadeInInput 0.7s cubic-bezier(.23,1.02,.32,1);
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@keyframes fadeInInput {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.auth-form input:focus, .auth-form select:focus {
+  border-color: #ffb300;
+  background: #232323;
+  box-shadow: 0 0 0 2px #ffb30044;
+}
+.auth-form input::placeholder {
+  color: #ffb30099;
+  opacity: 1;
+  transition: color 0.3s;
+  font-style: italic;
+}
+.auth-form input:focus::placeholder {
+  color: #ffb30044;
+}
+.auth-form button {
+  background: linear-gradient(90deg, #ffb300 0%, #ff8c00 100%);
+  color: #181818;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem;
+  font-size: 1.13rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0.7rem;
+  box-shadow: 0 2px 12px #ffb30033;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+.auth-form button:active {
+  transform: scale(0.97);
+}
+.auth-form button::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.25);
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s cubic-bezier(.23,1.02,.32,1), height 0.4s cubic-bezier(.23,1.02,.32,1);
+  z-index: 0;
+}
+.auth-form button:active::after {
+  width: 180%;
+  height: 500%;
+}
+.fight-title {
+  font-family: 'Bangers', Impact, sans-serif;
+  font-size: 2.7rem;
+  color: #ffb300;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  letter-spacing: 2px;
+  text-shadow: 2px 3px 0 #000, 0 2px 12px #ffb30055;
+  -webkit-text-stroke: 1.5px #181818;
+}
+.lgpd {
+  font-size: 0.97rem;
+  color: #bbb;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+  animation: fadeInLGPD 0.7s 0.2s both;
+  justify-content: flex-start;
+  text-align: left;
+  width: 100%;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.lgpd input[type="checkbox"] {
+  accent-color: #ffb300;
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5rem;
+}
+.lgpd a {
+  color: #ffb300;
+  text-decoration: underline;
+  transition: color 0.2s;
+  font-weight: bold;
+}
+.lgpd a:hover {
+  color: #ff8c00;
+}
+
+/* Efeito de entrada suave para campos dinâmicos */
+#register-fields {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+/* Scrollbar customizada */
+::-webkit-scrollbar {
+  width: 8px;
+  background: #232323;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffb30055;
+  border-radius: 8px;
+}
+
+@media (max-width: 500px) {
+  #auth-container {
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
+    border-radius: 0;
+  }
+  .auth-form h2 {
+    font-size: 1.1rem;
+  }
+  #auth-tabs button {
+    font-size: 1rem;
+  }
+}
+
+.center-wrapper {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
